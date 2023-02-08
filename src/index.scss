@@ -8,18 +8,19 @@ $backgroundColor: #f0f0f0;
 $primaryFont: "Hind Siliguri", sans-serif;
 $secondaryFont: "Covered By Your Grace", cursive;
 
-@import "./styles/commen.scss";
-@import "./styles/footer.scss";
-@import "./styles/homepage.scss";
-@import "./styles/cards.scss";
-@import "./styles/productDetail.scss";
-@import "./styles/login.scss";
+@import "./styles/_commen.scss";
+@import "./styles/_footer.scss";
+@import "./styles/_homepage.scss";
+@import "./styles/_cards.scss";
+@import "./styles/_productDetail.scss";
+@import "./styles/_login.scss";
+@import "./styles/_filters.scss";
 
 body {
   margin: 0;
   font-family: $primaryFont;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   color: $black;
 }

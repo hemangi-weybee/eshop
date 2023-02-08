@@ -1,0 +1,100 @@
+.filter-component {
+    border-right: 1px solid $borderColor;
+    width: 350px;
+    margin-right: 48px;
+
+    .filter-wrapper {
+        margin-bottom: 24px;
+
+        .filter-title {
+            font-size: 20px;
+            font-weight: bold;
+            padding-bottom: 10px;
+
+            text-transform: uppercase;
+            border-bottom: 1px solid $borderColor;
+            cursor: pointer;
+
+            &:hover {
+                color: $accentColor;
+            }
+        }
+
+        .filter-options {
+            margin-top: 10px;
+
+            &.hide {
+                display: none;
+            }
+
+            .filter-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                &.price {
+                    margin-bottom: 8px;
+                    justify-content: space-between;
+                }
+
+                input[type="radio"] {
+                    appearance: none;
+                    background-color: #fff;
+                    margin: 0;
+                    width: 16px;
+                    height: 16px;
+                    border: 2px solid $primaryColor;
+                    border-radius: 50%;
+                    display: grid;
+                    place-content: center;
+                }
+
+                input[type="radio"]::before {
+                    content: "";
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    transform: scale(0);
+                    transition: 120ms transform ease-in-out;
+                    background-color: $accentColor;
+                }
+
+                input[type="radio"]:checked::before {
+                    transform: scale(1);
+                }
+
+                input[type="number"] {
+                    width: 100px;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+
+    .action-control {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+            background: $accentColor;
+            color: #fff;
+
+            &:hover {
+                background-color: $primaryColor ;
+            }
+        }
+    }
+
+    input[type="number"], button {
+        cursor: pointer;
+        padding: 12px;
+        transition: all 0.5s ease;
+        border: 1.5px solid #ddd;
+        border-radius: 8px;
+        text-align: center;
+        outline: 0;
+        margin-right: 12px;
+        font-size: 16px;
+    }
+}

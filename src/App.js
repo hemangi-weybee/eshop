@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import FilterComponent from './components/FilterComponent';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
@@ -18,6 +19,7 @@ function App() {
         <Route path="/category/:id" element={<ProductListing />} />
         <Route path="/products" element={<ProductListing />} />
         <Route path="/login" element={<Loginpage />} />
+        <Route path="/filters" element={<FilterComponent />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />
