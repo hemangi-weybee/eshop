@@ -7,6 +7,7 @@
         width: 100%;
     }
 }
+
 .card-wrapper {
 
     img {
@@ -48,17 +49,7 @@
         text-transform: capitalize;
         font-weight: 700;
         position: relative;
-        // color: #12263a;
         margin: 0;
-        // &::after {
-        //     content: "";
-        //     position: absolute;
-        //     left: 0;
-        //     bottom: 0;
-        //     height: 4px;
-        //     width: 80px;
-        //     background: #12263a;
-        // }
     }
     .product-link {
         text-decoration: none;
@@ -128,6 +119,12 @@
     }
     .purchase-info {
         margin: 1.5rem 0;
+
+        .box {
+            margin-right: 10px;
+            height: 40px;
+        }
+
         input,
         .btn {
             border: 1.5px solid #ddd;

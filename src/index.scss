@@ -3,7 +3,7 @@
 $primaryColor: #c8b3a3;
 $accentColor: #99775C;
 $black: #474747;
-$borderColor: #dfdfdf;
+$borderColor: #eee;
 $backgroundColor: #f0f0f0;
 $primaryFont: "Hind Siliguri", sans-serif;
 $secondaryFont: "Covered By Your Grace", cursive;
@@ -11,7 +11,6 @@ $secondaryFont: "Covered By Your Grace", cursive;
 @import "./styles/commen.scss";
 @import "./styles/footer.scss";
 @import "./styles/homepage.scss";
-@import "./styles/navbar.scss";
 @import "./styles/cards.scss";
 @import "./styles/productDetail.scss";
 @import "./styles/login.scss";

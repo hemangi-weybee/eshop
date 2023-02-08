@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import CategoryListing from "../components/CategoryListing";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import CategoryListing from '../components/CategoryListing';
 
 const Homepage = () => {
   return (

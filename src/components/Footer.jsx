@@ -1,15 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Logo from "./Logo";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Logo from './Logo';
 
 const Footer = () => {
   return (
     <footer className="footer-distributed footer">
       <div className="footer-left">
-        <Logo/>
+        <Logo />
 
         <p className="footer-links">
-          <Link to="/" className="link-1">Home</Link>
+          <Link to="/" className="link-1">
+            Home
+          </Link>
           <Link to="/products">Products</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
@@ -40,11 +42,10 @@ const Footer = () => {
       </div>
 
       <div className="footer-right">
-        <p style={{ color: "white" }} className="footer-company-about">
+        <p style={{ color: 'white' }} className="footer-company-about">
           <span>About the company</span>
-          E-commerce (electronic commerce) is the buying and selling of goods
-          and services, or the transmitting of funds or data, over an electronic
-          network, primarily the internet.
+          E-commerce (electronic commerce) is the buying and selling of goods and services, or the
+          transmitting of funds or data, over an electronic network, primarily the internet.
         </p>
       </div>
     </footer>

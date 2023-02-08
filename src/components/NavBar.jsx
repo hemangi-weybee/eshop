@@ -1,6 +1,6 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import Logo from './Logo'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import Logo from './Logo';
 
 const NavBar = () => {
   return (
@@ -9,11 +9,14 @@ const NavBar = () => {
 
       <div>
         {/* <NavLink to='/' className='nav-item'>Home</NavLink> */}
-        <NavLink to='/wishlist' className='nav-item' title='Wishlist'><i className="fa fa-heart"></i> Wishlist</NavLink>
-        <NavLink to='/cart' className='nav-item' title='Cart'><i className="fa fa-shopping-cart"></i> Cart</NavLink>
+        {/* <NavLink to='/wishlist' className='nav-item' title='Wishlist'><i className="fa fa-heart"></i> Wishlist</NavLink>
+        <NavLink to='/cart' className='nav-item' title='Cart'><i className="fa fa-shopping-cart"></i> Cart</NavLink> */}
+        <NavLink to="/login" className="nav-item" title="Cart">
+          <i className="fa-solid fa-user"></i>
+        </NavLink>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

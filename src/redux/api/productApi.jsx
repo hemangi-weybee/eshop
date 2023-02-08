@@ -4,19 +4,19 @@ import { GetFilteredDataGQL } from '../gql/gqlQueries';
 import { baseGQL } from './baseQuery';
 
 export const productsApi = createApi({
-    reducerPath: 'products',
-    baseQuery: graphqlRequestBaseQuery({
-        url: baseGQL
-    }),
-    endpoints: builder => ({
-        GetProducts: builder.query({
-            query: (filter) => ({
-                document: GetFilteredDataGQL,
-                variables: filter || {}
-            }),
-            transformResponse: res => res.products
-        }),
+  reducerPath: 'products',
+  baseQuery: graphqlRequestBaseQuery({
+    url: baseGQL
+  }),
+  endpoints: (builder) => ({
+    GetProducts: builder.query({
+      query: (filter) => ({
+        document: GetFilteredDataGQL,
+        variables: filter || {}
+      }),
+      transformResponse: (res) => res.products
     })
+  })
 });
 
 export const { useGetProductsQuery } = productsApi;

@@ -1,11 +1,12 @@
-import { Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Homepage from "./pages/Homepage";
-import Loginpage from "./pages/Loginpage";
-import PageNotFound from "./pages/PageNotFound";
-import ProductDetail from "./pages/ProductDetail";
-import ProductListing from "./pages/ProductListing";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Homepage from './pages/Homepage';
+import Loginpage from './pages/Loginpage';
+import PageNotFound from './pages/PageNotFound';
+import ProductDetail from './pages/ProductDetail';
+import ProductListing from './pages/ProductListing';
 
 function App() {
   return (
