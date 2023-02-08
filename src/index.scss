@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Hind+Siliguri:wght@300;600&display=swap");
+
+$primaryColor: #c8b3a3;
+$accentColor: #99775C;
+$black: #474747;
+$borderColor: #dfdfdf;
+$backgroundColor: #f0f0f0;
+$primaryFont: "Hind Siliguri", sans-serif;
+$secondaryFont: "Covered By Your Grace", cursive;
+
+@import "./styles/commen.scss";
+@import "./styles/footer.scss";
+@import "./styles/homepage.scss";
+@import "./styles/navbar.scss";
+@import "./styles/cards.scss";
+@import "./styles/productDetail.scss";
+@import "./styles/login.scss";
+
+body {
+  margin: 0;
+  font-family: $primaryFont;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 1.5px;
+  color: $black;
+}

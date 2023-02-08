@@ -1,0 +1,214 @@
+.cat-card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  justify-items: center;
+
+  @media screen and (max-width: 575px) {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    padding: 0;
+  }
+
+  .category-card {
+    width: 100%;
+    border: 1px solid $borderColor;
+    cursor: pointer;
+
+    .img-container {
+      height: 150px;
+      padding: 10px;
+      background-color: $backgroundColor;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .text-container {
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    &:hover {
+      .img-container img {
+        opacity: 0.5;
+      }
+      .text-container {
+        color: $accentColor;
+      }
+    }
+  }
+
+}
+
+.products-card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+  padding: 0;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  }
+
+  @media screen and (max-width: 575px) {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+  }
+
+  .p-30 {
+    padding: 12px;
+  }
+
+  .product-card {
+    width: 100%;
+    position: relative;
+    /* box-shadow: 0 2px 7px #dfdfdf; */
+    margin: 0 auto;
+    background: #fafafa;
+    cursor: pointer;
+    outline: 1px solid #dfdfdf;
+  }
+
+  .badge {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    background: red;
+    color: #fff;
+    padding: 3px 10px;
+  }
+
+  .product-tumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 180px;
+    padding: 10px;
+    background: $backgroundColor;
+
+    @media screen and (max-width: 575px) {
+      height: 100px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .product-details {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90px;
+
+    @media screen and (max-width: 575px) {
+      height: 70px;
+    }
+
+    .product-name {
+      text-decoration: none;
+      font-weight: 500;
+      display: block;
+      text-transform: uppercase;
+      color: $black;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: bold;
+      cursor: pointer;
+
+      @media screen and (max-width: 575px) {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 12px;
+      }
+
+      &:hover {
+        color: $accentColor;
+      }
+    }
+
+    .desc {
+      font-size: 15px;
+      line-height: 22px;
+      margin-bottom: 10px;
+      color: #999;
+      font-weight: lighter;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+
+  }
+
+  .product-catagory {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ccc;
+    // margin-bottom: 18px;
+  }
+
+  .product-bottom-details {
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 575px) {
+      padding-top: 5px;
+    }
+  }
+
+  .product-price {
+    font-size: 18px;
+    color: $primaryColor;
+    font-weight: 600;
+
+    &:hover {
+      color: $accentColor;
+    }
+
+    @media screen and (max-width: 575px) {
+      font-size: 14px;
+    }
+  }
+
+  .product-price small {
+    font-size: 80%;
+    font-weight: 400;
+    text-decoration: line-through;
+    display: inline-block;
+    margin-right: 5px;
+    color: $primaryColor;
+  }
+
+  .product-links {
+    text-align: right;
+  }
+
+  .product-links .icon {
+    display: inline-block;
+    margin-left: 5px;
+    color: #e1e1e1;
+    transition: 0.3s;
+    font-size: 17px;
+    cursor: pointer;
+  }
+
+  .product-links .icon:hover {
+    color: $accentColor;
+  }
+}

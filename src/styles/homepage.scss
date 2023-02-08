@@ -1,0 +1,49 @@
+.homepage {
+  .banner {
+    width: 100%;
+    background-image: url("../images/banner-bg.png");
+    height: auto;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+
+    .big-text {
+      width: 100%;
+      margin: 0 auto;
+      font-size: 100px;
+      color: $black;
+      line-height: 90px;
+      padding-top: 20px;
+      font-family: "Great Vibes", cursive;
+      animation-delay: 1s;
+    }
+
+    .desc {
+      margin-top: 24px;
+      font-size: 20px;
+      color: #7c7c7c;
+    }
+
+    a {
+      margin: 32px;
+      display: inline-block;
+      background: #fff;
+      color: #36465d;
+      padding: 16px;
+      text-decoration: none;
+      font-size: 26px;
+      transition: 0.5s;
+      width: 30%;
+      border: 2px solid #fff;
+
+      @media screen and (max-width: 1024px) {
+        width: 80%;
+        margin: 12px;
+      }
+    }
+    a:hover {
+      box-shadow: 0px 0px 30px 0px $primaryColor inset;
+      // color: #fff;
+    }
+  }
+}

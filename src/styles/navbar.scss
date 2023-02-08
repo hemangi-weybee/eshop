@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  padding: 16px 32px;
+  box-shadow: -20px -30px 30px -50px #d3ab9e inset;
+
+  @media screen and (max-width: 1024px) {
+    padding: 16px 12px;
+  }
+
+  .nav-item {
+    font-size: 18px;
+    padding: 0 10px;
+    text-decoration: none;
+    color: $black;
+
+    i.fa {
+      font-size: 18px;
+      max-height: 18px;
+      max-width: 18px;
+    }
+
+    &.active, &:hover {
+      color: $accentColor;
+    }
+  }
+
+}
