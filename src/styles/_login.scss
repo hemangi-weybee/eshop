@@ -57,44 +57,45 @@
         }
     }
 
-    input {
-        display: block;
-        padding: 15px 10px;
-        margin: 10px auto;
-        width: inherit;
-        border: 1px solid #ddd;
-        transition: border-width 0.2s ease;
-        border-radius: 2px;
-        color: #ccc;
+    .login-item {
+        display: flex;
+        margin-bottom: 24px;
+        border: 1px solid $borderColor;
 
-        & + i.fa {
-            color: #fff;
-            font-size: 1em;
-            position: absolute;
-            margin-top: -40px;
-            opacity: 0;
-            left: 0;
-            transition: all 0.1s ease-in;
+        .icon {
+            padding: 10px 15px;
+            color: $accentColor;
         }
 
-        &:focus {
-            width: 85%;
-            & + i.fa {
-                opacity: 1;
-                left: 32px;
-                transition: all 0.25s ease-out;
+        input {
+            display: block;
+            padding: 10px;
+            width: 100%;
+            border: none;
+
+            &:focus, &:focus-visible {
+                // border-color: $accentColor;
+                outline: none;
             }
-            outline: none;
-            color: #444;
-            border-color: $accentColor;
-            border-left-width: 35px;
         }
+    }
+
+    .login-error {
+        padding: 10px;
+        color: red;
+        border: 1px solid red;
     }
 
     a {
         font-size: 0.8em;
         color: $accentColor;
         text-decoration: none;
+        text-align: right;
+        display: block;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     .title {
@@ -102,8 +103,24 @@
         font-size: 1.2em;
         font-weight: bold;
         margin: 10px 0 30px 0;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 20px;
+        border-bottom: 1px solid $borderColor;
+        padding-bottom: 10px;
+
+        span {
+            padding-right: 20px;
+
+            &:first-child {
+                border-right: 1px solid $accentColor;
+            }
+
+            &:last-child {
+                margin-left: 20px;
+            }
+
+            &.active {
+                color: $accentColor;
+            }
+        }
     }
 
     button {
@@ -122,7 +139,6 @@
         border: 0px solid rgba(0, 0, 0, 0.1);
         border-radius: 0 0 2px 2px;
         transform: rotateZ(0deg);
-
         transition: all 0.1s ease-out;
         border-bottom-width: 7px;
 

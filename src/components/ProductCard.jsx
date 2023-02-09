@@ -7,7 +7,7 @@ const ProductCard = ({ data }) => {
     <div
       className="product-card"
       onClick={(e) => !e.target.classList.contains('icon') && navigate(`/product/${data.id}`)}>
-      {/* <div className="badge">Hot</div> */}
+      <div className="badge">{data.category.name}</div>
       <div className="img-container">
         <div className="img-wrapper">
           <img src={data.images[0]} alt="" />

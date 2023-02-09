@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PaginationControl } from 'react-bootstrap-pagination-control';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import FilterComponent from '../components/FilterComponent';
 import Loader from '../components/Loader';
 import ProductCard from '../components/ProductCard';
@@ -9,17 +9,32 @@ import { useGetProductsQuery } from '../redux/api/productApi';
 import { addFilters } from '../redux/slice/filterSlice';
 
 const ProductListing = () => {
-  const params = useParams();
-  const dispatch = useDispatch();
-  const filters = useSelector((state) => state.filters);
-  const [page, setPage] = useState(1);
   const limit = 20;
-  const { isLoading, isError, data } = useGetProductsQuery(filters);
+  const [page, setPage] = useState(1);
+  const [skip, setSkip] = useState(true);
+  const filters = useSelector((state) => state.filters);
+  const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
+  const { isLoading, isError, data, isUninitialized } = useGetProductsQuery(filters, {
+    skip: skip
+  });
 
   useEffect(() => {
-    if (params.id) {
-      dispatch(addFilters({ ...filters, categoryId: Number(params.id) }));
+    if (
+      searchParams.has('categoryId') ||
+      searchParams.has('minPrice') ||
+      searchParams.has('maxPrice')
+    ) {
+      dispatch(
+        addFilters({
+          ...filters,
+          ...(searchParams.get('categoryId') && { categoryId: searchParams.get('categoryId') }),
+          ...(searchParams.get('minPrice') && { minPrice: searchParams.get('minPrice') }),
+          ...(searchParams.get('maxPrice') && { maxPrice: searchParams.get('maxPrice') })
+        })
+      );
     }
+    setSkip(false);
   }, []);
 
   return (
@@ -29,14 +44,14 @@ const ProductListing = () => {
         <div className="spad product-listing">
           <h3 className="heading">Our Products</h3>
 
-          {isLoading ? (
+          {isLoading || isUninitialized ? (
             <Loader desc />
-          ) : isError || data.length === 0 ? (
+          ) : isError || data?.length === 0 ? (
             <div className="error"> No data found </div>
           ) : (
             <>
               <div className="card-grid">
-                {data.slice((page - 1) * 20, page * 20).map((item) => (
+                {data?.slice((page - 1) * 20, page * 20).map((item) => (
                   <ProductCard data={item} key={item.id} />
                 ))}
               </div>

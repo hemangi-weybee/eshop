@@ -1,7 +1,16 @@
 .filter-component {
     border-right: 1px solid $borderColor;
+    border-left: 1px solid $borderColor;
     width: 350px;
     margin-right: 48px;
+
+    .heading {
+        padding-left: 12px;
+
+        &::after {
+            margin-left: 12px;
+        }
+    }
 
     .filter-wrapper {
         margin-bottom: 24px;
@@ -9,19 +18,19 @@
         .filter-title {
             font-size: 20px;
             font-weight: bold;
-            padding-bottom: 10px;
-
+            padding: 0 0 10px 12px;
             text-transform: uppercase;
             border-bottom: 1px solid $borderColor;
-            cursor: pointer;
+            // cursor: pointer;
 
-            &:hover {
-                color: $accentColor;
-            }
+            // &:hover {
+            //     color: $accentColor;
+            // }
         }
 
         .filter-options {
             margin-top: 10px;
+            padding: 0 0 10px 12px;
 
             &.hide {
                 display: none;
@@ -75,6 +84,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 24px;
+        padding-left: 12px;
 
         button {
             background: $accentColor;

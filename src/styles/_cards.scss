@@ -3,26 +3,26 @@
   border: 1px solid $borderColor;
   cursor: pointer;
 
-  .img-container {
-    height: 180px;
-    padding: 10px;
-    background-color: $backgroundColor;
+  // .img-container {
+  //   height: 180px;
+  //   padding: 10px;
+  //   background-color: $backgroundColor;
 
-    @media screen and (max-width: 575px) {
-      height: 100px;
-    }
+  //   @media screen and (max-width: 575px) {
+  //     height: 100px;
+  //   }
 
-    .img-wrapper {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-    }
+  //   .img-wrapper {
+  //     height: 100%;
+  //     width: 100%;
+  //     overflow: hidden;
+  //   }
 
-    img {
-      height: 100%;
-      width: 100%;
-    }
-  }
+  //   img {
+  //     height: 100%;
+  //     width: 100%;
+  //   }
+  // }
 
   .text-container {
     padding: 10px;
@@ -44,22 +44,23 @@
 .product-card {
   width: 100%;
   position: relative;
-  /* box-shadow: 0 2px 7px #dfdfdf; */
+  // box-shadow: 0 2px 7px #dfdfdf; 
   margin: 0 auto;
   background: #fafafa;
   cursor: pointer;
-  outline: 1px solid #dfdfdf;
+  outline: 1px solid $borderColor;
 
   .badge {
     position: absolute;
     left: 0;
-    top: 20px;
+    top: 0px;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 10px;
     font-weight: 700;
-    background: red;
-    color: #fff;
-    padding: 3px 10px;
+    background: $primaryColor;
+    // outline: 1px solid $borderColor;
+    padding: 3px 5px;
+    z-index: 10;
   }
 
   .product-details {
@@ -96,7 +97,7 @@
     }
 
     .desc {
-      font-size: 15px;
+      font-size: 12px;
       color: #999;
       font-weight: lighter;
       text-overflow: ellipsis;
@@ -174,7 +175,7 @@
   }
 
   &:hover {
-    .product-tumb img {
+    .img-container img {
       transform: scale(1.2);
     }
 
@@ -188,6 +189,8 @@
 .product-listing {
   padding-top: 0;
   width: 100%;
+  padding-right: 48px;
+  border-right: 1px solid $borderColor;
 }
 
 .listing-page {
@@ -212,5 +215,12 @@
   img {
     height: 100%;
     width: 100%;
+    transition: all 0.5s;
+  }
+
+  &:hover {
+    .img-container img {
+      transform: scale(1.2);
+    }
   }
 }

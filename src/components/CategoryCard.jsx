@@ -9,8 +9,11 @@ const CategoryCard = ({ data }) => {
   const filters = useSelector((state) => state.filters);
 
   const handleCategory = () => {
-    dispath(addFilters({ ...filters, categoryId: Number(data.id) }));
-    navigate(`/category/${data.id}`);
+    dispath(addFilters({ ...filters, categoryId: data.id }));
+    navigate({
+      pathname: '/products',
+      search: `?categoryId=${data.id}`
+    });
   };
 
   return (

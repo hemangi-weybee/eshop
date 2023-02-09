@@ -1,24 +1,46 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { useGetCategoriesQuery } from '../redux/api/categoryApi';
-import { addFilters, resetFilters } from '../redux/slice/filterSlice';
+import { addFilters, filterInitState, resetFilters } from '../redux/slice/filterSlice';
 
 const FilterComponent = () => {
   const { data } = useGetCategoriesQuery();
   const dispatch = useDispatch();
-  const [filters, setFilters] = useState(useSelector((state) => state.filters));
-  const [category, setCategory] = useState();
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+  const filters = useSelector((state) => state.filters);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [localFilter, setLocalFilter] = useState({
+    categoryId: searchParams.get('categoryId'),
+    minPrice: searchParams.get('minPrice') || filters.minPrice,
+    maxPrice: searchParams.get('maxPrice') || filters.maxPrice
+  });
 
   const applyFilter = () => {
     dispatch(
-      addFilters({ ...filters, categoryId: category, minPrice: minPrice, maxPrice: maxPrice })
+      addFilters({
+        ...filters,
+        categoryId: localFilter.categoryId,
+        minPrice: localFilter.minPrice,
+        maxPrice: localFilter.maxPrice
+      })
     );
+    setSearchParams({
+      ...(localFilter.categoryId && { categoryId: localFilter.categoryId }),
+      ...(localFilter.minPrice && {
+        minPrice: localFilter.minPrice,
+        maxPrice: localFilter.maxPrice
+      })
+    });
   };
 
   const clearFilter = () => {
     dispatch(resetFilters());
+    setSearchParams({});
+    setLocalFilter({
+      categoryId: filterInitState.categoryId,
+      minPrice: filterInitState.minPrice,
+      maxPrice: filterInitState.maxPrice
+    });
   };
 
   return (
@@ -28,16 +50,18 @@ const FilterComponent = () => {
         <div className="filter-title"> Category </div>
         <div className="filter-options">
           {data?.length
-            ? data.map((category, i) => (
+            ? data.map((cat, i) => (
                 <div className="filter-item" key={i}>
                   <input
                     type="radio"
-                    id={category.id}
+                    id={cat.id}
                     name="category"
-                    value={category.id}
-                    onChange={(e) => setCategory(Number(e.target.value))}
+                    value={cat.id}
+                    checked={cat.id == localFilter.categoryId}
+                    // defaultChecked={cat.id == localFilter.categoryId}
+                    onChange={(e) => setLocalFilter({ ...localFilter, categoryId: e.target.value })}
                   />
-                  <label htmlFor={category.id}>{category.name} </label>
+                  <label htmlFor={cat.id}>{cat.name} </label>
                 </div>
               ))
             : null}
@@ -47,23 +71,23 @@ const FilterComponent = () => {
         <div className="filter-title"> Price </div>
         <div className="filter-options">
           <div className="filter-item price">
-            <label htmlFor="min"> Minimum Price </label>
+            <label htmlFor="min"> Min Price </label>
             <input
               id="min"
               type="number"
-              min="0"
-              defaultValue="0"
-              onChange={(e) => setMinPrice(Number(e.target.value))}
+              minLength="0"
+              defaultValue={localFilter.minPrice}
+              onChange={(e) => setLocalFilter({ ...localFilter, minPrice: e.target.value })}
             />
           </div>
           <div className="filter-item price">
-            <label htmlFor="max"> Maximum Price </label>
+            <label htmlFor="max"> Max Price </label>
             <input
               id="max"
               type="number"
-              min="0"
-              defaultValue="0"
-              onChange={(e) => setMaxPrice(Number(e.target.value))}
+              maxLength="100000"
+              defaultValue={localFilter.maxPrice}
+              onChange={(e) => setLocalFilter({ ...localFilter, maxPrice: e.target.value })}
             />
           </div>
         </div>
