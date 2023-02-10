@@ -48,10 +48,12 @@
 // }
 
 .error, .page-not-found {
-  height: 400px;
+  height: calc(100vh - 365px);
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 300px;
+  font-size: 18px;
 }
 
 .heading {

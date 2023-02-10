@@ -35,7 +35,7 @@ const ProductDetail = () => {
 
             <div className="product-content">
               <h2 className="product-title">{data.title}</h2>
-              <a href="#" className="product-link">
+              <a href={`/products?categoryId=${data.category.id}`} className="product-link">
                 {data.category.name}
               </a>
 
