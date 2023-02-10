@@ -3,15 +3,17 @@ import { configureStore } from '@reduxjs/toolkit';
 import { categoryApi } from './api/categoryApi';
 import { productDetailApi } from './api/productDetailApi';
 import { productsApi } from './api/productApi';
-import { filters } from './slice/filterSlice';
+import { filterSlice } from './slice/filterSlice';
 import { authenticateApi } from './api/authenticateApi';
+import { userDetailSlice } from './slice/userSlice';
 
 const reducer = {
   [productsApi.reducerPath]: productsApi.reducer,
   [categoryApi.reducerPath]: categoryApi.reducer,
   [productDetailApi.reducerPath]: productDetailApi.reducer,
   [authenticateApi.reducerPath]: authenticateApi.reducer,
-  [filters.name]: filters.reducer
+  [filterSlice.name]: filterSlice.reducer,
+  [userDetailSlice.name]: userDetailSlice.reducer
 };
 
 const customMiddleware = [

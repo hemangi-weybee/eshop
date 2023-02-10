@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { graphqlRequestBaseQuery } from '@rtk-query/graphql-request-base-query';
-import { AddUser, AuthenticateUser } from '../gql/gqlQueries';
+import { SignupUser, LoginUser } from '../gql/gqlQueries';
 import { baseGQL } from './baseQuery';
 
 export const authenticateApi = createApi({
@@ -11,13 +11,13 @@ export const authenticateApi = createApi({
   endpoints: (builder) => ({
     login: builder.query({
       query: (data) => ({
-        document: AuthenticateUser,
+        document: LoginUser,
         variables: data
       })
     }),
     signup: builder.query({
       query: (data) => ({
-        document: AddUser,
+        document: SignupUser,
         variables: data
       })
     })

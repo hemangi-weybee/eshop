@@ -7,7 +7,7 @@ export const filterInitState = {
   maxPrice: 100000
 };
 
-export const filters = createSlice({
+export const filterSlice = createSlice({
   name: 'filters',
   initialState: filterInitState,
   reducers: {
@@ -26,4 +26,4 @@ export const filters = createSlice({
   }
 });
 
-export const { addFilters, resetFilters } = filters.actions;
+export const { addFilters, resetFilters } = filterSlice.actions;

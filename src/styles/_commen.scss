@@ -180,28 +180,41 @@
     padding: 16px 12px;
   }
 
-  .nav-item {
-    display: inline-block;
-    font-size: 18px;
-    text-decoration: none;
-    background-color: $primaryColor;
-    color: $backgroundColor;
-    height: 35px;
-    width: 35px;
-    text-align: center;
-    line-height: 35px;
-    border-radius: 50%;
-
-    i.fa {
+  .navbar-items {
+    display: flex;
+    gap: 12px;
+    .nav-item {
+      display: flex;
+      align-items: center;
       font-size: 18px;
-      max-height: 18px;
-      max-width: 18px;
-    }
+      text-decoration: none;
+      color: $black;
+      cursor: pointer;
+      // display: inline-block;
+      // background-color: $primaryColor;
+      // height: 35px;
+      // width: 35px;
+      // text-align: center;
+      // line-height: 35px;
+      // border-radius: 50%;
 
-    &.active, &:hover {
-      color: $accentColor;
+      i.fa {
+        display: inline;
+        font-size: 18px;
+      }
+
+      .title {
+        font-size: 14px;
+        padding-left: 12px;
+        line-height: 18px;
+      }
+
+      &.active, &:hover {
+        color: $accentColor;
+      }
     }
   }
+
 }
 
 .loaders {

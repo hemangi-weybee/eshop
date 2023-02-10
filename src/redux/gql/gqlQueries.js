@@ -49,7 +49,7 @@ export const GetFilteredDataGQL = gql`
   }
 `;
 
-export const AuthenticateUser = gql`
+export const LoginUser = gql`
   mutation login($email: String! = "john@mail.com", $password: String! = "changeme") {
     login(email: $email, password: $password) {
       access_token
@@ -58,16 +58,20 @@ export const AuthenticateUser = gql`
   }
 `;
 
-export const AddUser = gql`
-  mutation addUser(
+export const SignupUser = gql`
+  mutation SignupUser(
     $name: String!
     $email: String!
     $password: String!
     $avatar: String! = "https://pics.freeicons.io/uploads/icons/png/12809185121645017043-512.png"
   ) {
     addUser(data: { name: $name, email: $email, password: $password, avatar: $avatar }) {
-      id
-      name
+      email
+      password
+    }
+    login(email: $email, password: $password) {
+      access_token
+      refresh_token
     }
   }
 `;
