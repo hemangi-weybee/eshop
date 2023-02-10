@@ -55,7 +55,7 @@ const LoginComponent = ({ setIsLoading, setCurrent }) => {
         <input type="password" placeholder="Password" required={true} ref={passRef} />
       </div>
       <div className="link">
-        New to Eshop ? <span onClick={() => setCurrent(1)}> Create Account </span>
+        New to SaleStorm ? <span onClick={() => setCurrent(1)}> Create Account </span>
       </div>
       <button type="submit" onClick={handleSubmit}>
         <i className="spinner"></i>

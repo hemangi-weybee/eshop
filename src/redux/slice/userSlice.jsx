@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = JSON.parse(localStorage.getItem('eshop'))
-  ? JSON.parse(localStorage.getItem('eshop'))
+const initialState = JSON.parse(localStorage.getItem('saleStorm'))
+  ? JSON.parse(localStorage.getItem('saleStorm'))
   : false;
 
 export const userDetailSlice = createSlice({
@@ -9,14 +9,14 @@ export const userDetailSlice = createSlice({
   initialState: initialState,
   reducers: {
     addUserDetail(state, action) {
-      localStorage.setItem('eshop', JSON.stringify({ ...action.payload }));
+      localStorage.setItem('saleStorm', JSON.stringify({ ...action.payload }));
       return {
         ...state,
         ...action.payload
       };
     },
     logout() {
-      localStorage.removeItem('eshop');
+      localStorage.removeItem('saleStorm');
       return false;
     },
     addToCart(state, action) {

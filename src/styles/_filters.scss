@@ -4,6 +4,12 @@
     width: 350px;
     margin-right: 48px;
 
+    @media screen and (max-width: 1024px) {
+        border: 0;
+        margin: 0;
+        width: 100%;
+    }
+
     .heading {
         padding-left: 12px;
 
@@ -87,6 +93,10 @@
         margin-bottom: 24px;
         padding-left: 12px;
 
+        @media screen and (max-width: 1024px) {
+            justify-content: flex-start;
+        }
+
         button {
             background: $accentColor;
             color: #fff;
@@ -107,5 +117,15 @@
         outline: 0;
         margin-right: 12px;
         font-size: 16px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        div, h3 {
+            padding-left: 0 !important;
+
+            &::after {
+                margin-left: 0 !important;
+            }
+        }
     }
 }

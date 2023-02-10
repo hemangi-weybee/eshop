@@ -17,7 +17,7 @@ const Footer = () => {
           <Link to="/contact">Contact</Link>
         </p>
 
-        <p className="footer-company-name">Sell Cart Pvt Ltd © 2015</p>
+        {/* <p className="footer-company-name">Sell Cart Pvt Ltd © 2015</p> */}
       </div>
 
       <div className="footer-center">

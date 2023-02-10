@@ -10,14 +10,37 @@ import { addFilters } from '../redux/slice/filterSlice';
 
 const ProductListing = () => {
   const limit = 20;
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
+  const [isMobile, setIsMobile] = useState(false);
   const [page, setPage] = useState(1);
   const [skip, setSkip] = useState(true);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const filters = useSelector((state) => state.filters);
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const { isLoading, isError, data, isUninitialized } = useGetProductsQuery(filters, {
     skip: skip
   });
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 1025) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     if (
@@ -40,35 +63,44 @@ const ProductListing = () => {
   return (
     <div className="container">
       <div className="listing-page">
-        <FilterComponent />
-        <div className="spad product-listing">
-          <h3 className="heading">Our Products</h3>
+        {isMobile && isFilterOpen ? (
+          <FilterComponent setIsFilterOpen={setIsFilterOpen} />
+        ) : (
+          <>
+            {!isMobile && <FilterComponent />}
+            <div className="spad product-listing">
+              <h3 className="heading">
+                Our Products
+                {isMobile && <span onClick={() => setIsFilterOpen(true)}>Filters</span>}
+              </h3>
 
-          {isLoading || isUninitialized ? (
-            <Loader desc />
-          ) : isError || data?.length === 0 ? (
-            <div className="error"> No data found </div>
-          ) : (
-            <>
-              <div className="card-grid">
-                {data?.slice((page - 1) * 20, page * 20).map((item) => (
-                  <ProductCard data={item} key={item.id} />
-                ))}
-              </div>
+              {isLoading || isUninitialized ? (
+                <Loader desc />
+              ) : isError || data?.length === 0 ? (
+                <div className="error"> No data found </div>
+              ) : (
+                <>
+                  <div className="card-grid">
+                    {data?.slice((page - 1) * 20, page * 20).map((item) => (
+                      <ProductCard data={item} key={item.id} />
+                    ))}
+                  </div>
 
-              <div className="pagination-wrapper">
-                <PaginationControl
-                  page={page}
-                  between={4}
-                  total={data.length}
-                  limit={limit}
-                  changePage={(page) => setPage(page)}
-                  ellipsis={1}
-                />
-              </div>
-            </>
-          )}
-        </div>
+                  <div className="pagination-wrapper">
+                    <PaginationControl
+                      page={page}
+                      between={4}
+                      total={data.length}
+                      limit={limit}
+                      changePage={(page) => setPage(page)}
+                      ellipsis={1}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

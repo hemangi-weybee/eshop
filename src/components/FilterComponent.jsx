@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useGetCategoriesQuery } from '../redux/api/categoryApi';
 import { addFilters, filterInitState, resetFilters } from '../redux/slice/filterSlice';
 
-const FilterComponent = () => {
+const FilterComponent = ({ setIsFilterOpen }) => {
   const { data } = useGetCategoriesQuery();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
@@ -31,6 +31,7 @@ const FilterComponent = () => {
         maxPrice: localFilter.maxPrice
       })
     });
+    setIsFilterOpen(false);
   };
 
   const clearFilter = () => {
@@ -45,7 +46,12 @@ const FilterComponent = () => {
 
   return (
     <div className="filter-component">
-      <h3 className="heading"> Filters </h3>
+      <h3 className="heading">
+        Filters
+        <span className="filter-btn" onClick={() => setIsFilterOpen(false)}>
+          Close
+        </span>
+      </h3>
       <div className="filter-wrapper">
         <div className="filter-title"> Category </div>
         <div className="filter-options">
