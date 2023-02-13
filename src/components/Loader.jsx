@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Loader = ({ desc, detail }) => {
-  const arr = new Array(10).fill(0);
+const Loader = ({ desc, detail, limit }) => {
+  const arr = new Array(limit || 1).fill(0);
   return (
     <div className="container loaders">
       {!detail ? (

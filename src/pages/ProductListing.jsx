@@ -75,13 +75,13 @@ const ProductListing = () => {
               </h3>
 
               {isLoading || isUninitialized ? (
-                <Loader desc />
+                <Loader desc limit={limit} />
               ) : isError || data?.length === 0 ? (
                 <div className="error"> No data found </div>
               ) : (
                 <>
                   <div className="card-grid">
-                    {data?.slice((page - 1) * 20, page * 20).map((item) => (
+                    {data?.slice((page - 1) * limit, page * limit).map((item) => (
                       <ProductCard data={item} key={item.id} />
                     ))}
                   </div>

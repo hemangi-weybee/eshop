@@ -12,7 +12,7 @@ const CategoryListing = () => {
 
       <div>
         {isLoading ? (
-          <Loader />
+          <Loader limit={5} />
         ) : isError || data.length === 0 ? (
           <div className="error"> No data found </div>
         ) : (
